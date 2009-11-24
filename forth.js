@@ -88,7 +88,8 @@ function Forth(prgrm) {
                                         w.find();
                                         var im = s.pop();
                                         if (im == 0) // not found
-                                            throw "Neradau as to zdz '" + word + "'";
+                                            throw "Neradau as to zdz '"
+                                                    + word + "'";
                                         else if (im == 1) // immediate
                                             w.execute();
                                         else if (im == -1) // normal
@@ -196,7 +197,7 @@ function Forth(prgrm) {
                             return [w[word]];
                         });
 
-    var push_word = to_word(1, function(a) { 
+    var push_word = to_word(1, function(a) {
                                 current_word.code.push(a); return []; });
 
     w['compile'] = to_word(0, function() {
@@ -221,7 +222,7 @@ function Forth(prgrm) {
     w['<'] = to_word(2, function(a,b) { return [a < b]; });
     w['>='] = to_word(2, function(a,b) { return [a >= b]; });
     w['<='] = to_word(2, function(a,b) { return [a <= b]; });
-    
+
 
     var as = []; // address stack
     w['>mark'] = to_word(0, function() {
@@ -303,10 +304,17 @@ function Forth(prgrm) {
 function forth(p) { return new Forth(p); }
 
 
+
+
 var forth_program = <forth>
-: rrrr dup 6 > if 1337 else 1 + .s rrrr then ;
-6 rrrr
-.s
+
+: rrrr dup 6 >
+    if 1337
+    else 1 + .s rrrr
+    then ;
+
+6 rrrr .s
+
 </forth>;
 
 
@@ -325,7 +333,6 @@ var f = forth(forth_program + '');
 var s = f.stack;
 var w = f.words;
 f.run();
-
 
 //prof("forth", w.profiliavimui, 1000, 3);
 //function profiliavimui() { if (false) { return 1; } else {return 2;};}
