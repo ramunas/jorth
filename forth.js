@@ -1,3 +1,6 @@
+
+
+
 function init() {}
 function print(a) { console.log(a); }
 function print_all(a) { for (var i in a) { print(a[i]); } }
